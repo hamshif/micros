@@ -8,7 +8,7 @@ def gossip(txt):
 
     h = 'http://'
     host = 'localhost'
-    port = '5000'
+    port = '8002'
     endpoint = 'gossip'
 
     url = f'{h}{host}:{port}/{endpoint}'
