@@ -3,7 +3,7 @@ from random import randint
 
 def show_something():
     r = randint(0, 9)
-    text = f"\nMegochach\nWielding Slate\nHello World!\n{r}"
+    text = f"\nMegochach ve Hatsuf!!\nWielding Slate\nHello World!\n{r}"
     return text
 
 
