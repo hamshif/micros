@@ -6,15 +6,17 @@ from whisperer.whisperer import *
 
 app = Flask(__name__)
 
+SERVICE_NAME = 'whisperer'
+
 
 @app.route('/')
 def index():
     return 'Index Page'
 
 
-@app.route("/hello")
+@app.route("/hello", methods=['GET', 'POST'])
 def hello():
-    return show_something()
+    return show_something(SERVICE_NAME)
 
 
 @app.route("/gossip", methods=['GET', 'POST'])
@@ -24,7 +26,7 @@ def gossip():
 
         reply = {
             'reply': "fantastic",
-            'text': show_something()
+            'text': show_something(SERVICE_NAME)
         }
 
         return jsonify(reply)

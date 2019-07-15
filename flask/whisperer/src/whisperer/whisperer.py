@@ -1,9 +1,9 @@
 from random import randint
 
 
-def show_something():
+def show_something(service_name):
     r = randint(0, 9)
-    text = f"\nMegochach ve Madroob!!\nWielding Slate\nHello World!\n{r}"
+    text = f"\nMegochach ve Madroob!!\nWielding {service_name}\nHello World!\n{r}"
     return text
 
 
