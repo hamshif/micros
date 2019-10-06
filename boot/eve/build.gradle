@@ -24,4 +24,13 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams
+    compile group: 'org.apache.kafka', name: 'kafka-streams', version: '2.3.0'
+
+    // https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients
+    compile group: 'org.apache.kafka', name: 'kafka-clients', version: '2.3.0'
+
+    // https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams-scala
+    compile group: 'org.apache.kafka', name: 'kafka-streams-scala_2.12', version: '2.3.0'
 }
