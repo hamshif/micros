@@ -20,10 +20,19 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation('org.springframework.boot:spring-boot-starter-thymeleaf'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+    implementation('org.springframework.boot:spring-boot-starter-web'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('org.springframework.boot:spring-boot-starter-test'){
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.1.9.RELEASE'
 
     // https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams
     compile group: 'org.apache.kafka', name: 'kafka-streams', version: '2.3.0'
@@ -34,3 +43,14 @@ dependencies {
     // https://mvnrepository.com/artifact/org.apache.kafka/kafka-streams-scala
     compile group: 'org.apache.kafka', name: 'kafka-streams-scala_2.12', version: '2.3.0'
 }
+
+// TODO find out how to either add broker for testing or shut down broker related tests
+tasks.withType(Test) {
+    scanForTestClasses = false
+    include "**/*Test.class" // whatever Ant pattern matches your test class files
+}
+
+//// Added in the build.gradle file
+//test {
+//    exclude '**/TestEventLogger.class'
+//}
